@@ -1,0 +1,49 @@
+
+#TitlePong{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+}
+#titlePong{
+    text-align: center;
+    justify-content: center;
+
+}
+#forNames{
+    
+    display: flex;
+    justify-content: center;
+}
+
+#tournamentInput{
+    text-align:center;
+}
+
+#tournamentInput > * {
+    margin-bottom: 1em;
+}
+
+
+#btns{
+    display: flex;
+}
+#btns2{
+    display: flex;
+}
+#btn{
+    size: 50vw;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    
+}
+
+#btn > * {
+    border: solid 1px  rgb(129, 129, 129);
+    width: 15vw;
+    border-radius: 0px;
+
+}

@@ -1,0 +1,143 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
+
+
+    <title>Pong, the Rematch</title>
+
+    <link rel="stylesheet" href="{% static 'css/log.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/friends.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/profil.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pong.css' %}" />
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light  header">
+        <a id="pong_link" class="navbar-brand" href="{% url 'pong:index' %}">PONG</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                <a id="profil_link" class="nav-item nav-link active bar" style="display: none;" lang="fr"
+                    href="{% url 'pong:profil' %}">Profil</a>
+                <a id="profil_link" class="nav-item nav-link active bar" style="display: none;" lang="es"
+                    href="{% url 'pong:profil' %}">Perfil</a>
+                <a id="profil_link" class="nav-item nav-link active bar" style="display: none;" lang="en"
+                    href="{% url 'pong:profil' %}">Profile</a>
+
+                <a onclick="getInfo()" class="nav-item nav-link active bar" style="display: none;" lang="fr"
+                    href="{% url 'pong:pong' %}">Jeu</a>
+                <a onclick="getInfo()" class="nav-item nav-link active bar" style="display: none;" lang="es"
+                    href="{% url 'pong:pong' %}">Juego</a>
+                <a onclick="getInfo()" class="nav-item nav-link active bar" style="display: none;" lang="en"
+                    href="{% url 'pong:pong' %}">Game</a>
+
+                <a id="friends_link" class="nav-item nav-link active bar" style="display: none;" lang="fr"
+                    href="{% url 'pong:friends' %}">Amis</a>
+                <a id="friends_link" class="nav-item nav-link active bar" style="display: none;" lang="es"
+                    href="{% url 'pong:friends' %}">Amigos</a>
+                <a id="friends_link" class="nav-item nav-link active bar" style="display: none;" lang="en"
+                    href="{% url 'pong:friends' %}">Friends</a>
+
+                <a id="link_logout" class="nav-link" style="display: none;" lang="fr"
+                    href="{% url 'utilisateurs:logout_view' %}">Déconnexion</a>
+                <a id="link_logout" class="nav-link" style="display: none;" lang="es"
+                    href="{% url 'utilisateurs:logout_view' %}">Desconectar</a>
+                <a id="link_logout" class="nav-link" style="display: none;" lang="en"
+                    href="{% url 'utilisateurs:logout_view' %}">Logout</a>
+                {% else %}
+                <a class="nav-link" style="display: none;" lang="fr"
+                    href="{% url 'utilisateurs:register' %}">Inscription</a>
+                <a class="nav-link" style="display: none;" lang="fr" href="{% url 'utilisateurs:login' %}">Connexion</a>
+
+                <a class="nav-link" style="display: none;" lang="es"
+                    href="{% url 'utilisateurs:register' %}">Registro</a>
+                <a class="nav-link" style="display: none;" lang="es" href="{% url 'utilisateurs:login' %}">Conexión</a>
+
+                <a class="nav-link" style="display: none;" lang="en"
+                    href="{% url 'utilisateurs:register' %}">Sign-up</a>
+                <a class="nav-link" style="display: none;" lang="en" href="{% url 'utilisateurs:login' %}">Login</a>
+                {% endif %}
+            </div>
+
+            {% if user.is_authenticated %}
+            <form method="post" action="{% url 'pong:save_button_info' %}" class="form">
+                {% csrf_token %}
+                <div class=" p-2 bd-highlight language" role="group">
+                    <button type="button" class="btn btn-primary "
+                        onclick="init_language('fr'); language='fr'">FR</button>
+                    <button type="button" class="btn btn-warning btn-primary"
+                        onclick="init_language('es'); language='es'">ES</button>
+                    <button type="button" class="btn btn-danger btn-primary"
+                        onclick="init_language('en'); language='en'">EN</button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="bottom"></div>
+
+    <!-- Définit la zone principale de la page. -->
+    <main role="main" class="container">
+        <div class="pb-2 mb-2">
+            {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/base.js' %}"></script>
+<script class="scipt_data">
+var id = '{{player.id}}';
+var nickname = '{{player.nickname}}';
+var email = '{{player.email}}';
+var wins = '{{player.wins}}';
+var loses = '{{player.loses}}';
+var tourPos = '{{player.tourPos}}';
+var tourAll = '{{player.tourAll}}';
+var duelMyname = ['{{player.duelMyname}}'];
+var duelEnemy = ['{{player.duelEnemy}}'];
+var duelMe = ['{{player.duelMe}}'];
+var duelThem = ['{{player.duelThem}}'];
+var FriendsId = '{{player.FriendsId}}';
+var language = '{{player.language}}';
+if (language.length === 0) {
+    language = 'en'
+}
+</script>
+<script src="{% static 'js/pong.js' %}"></script>
+<script src="{% static 'js/profil.js' %}"></script>
+<script src="{% static 'js/friends.js' %}"></script>
+<script src="{% static 'js/tournament.js' %}"></script>
+<script src="{% static 'js/pong4player.js' %}"></script>
+<script src="{% static 'js/language.js' %}"></script>
+<script src="{% static 'js/router.js' %}"></script>
+
+</html>

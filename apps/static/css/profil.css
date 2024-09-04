@@ -1,0 +1,401 @@
+@media only screen and (max-width: 550px) {
+
+    .perso{
+        
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        #one{
+            width: 90vw;
+        }
+        .title2{
+            width: 100vw;
+
+            font-size: 5VW;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            text-align: center;
+        }
+        .litleTitle{
+            font-family: "Archivo Black", sans-serif;
+            font-weight: bold ;
+            font-size: 4VW;
+            padding-bottom: 8%;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .dot {
+            height: 70vw;
+            width: 70vw;            
+        }
+        #box2{
+            justify-content: center;
+            width: 50vw; /*taile des rectagnle tournoi*/
+            display: flex;
+            font-size: 50vw;
+        }
+        #box{
+            width: 80vw; /*taile des rectagnle 1v1*/
+            font-size: 4vw;
+        }
+    }
+}
+
+
+@media  only screen and  (max-width: 1024px) {
+
+    .perso{
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .perso > div {
+        flex: 50vw;
+    }
+    #one{
+        width: 30vw;
+    }
+    .form-profil{
+        display: flex;
+        flex-direction: column;
+        padding-left: 5vw;
+    }    
+
+    #box{
+        width: 40vw; /*taile des rectagnle 1v1*/
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5vw;
+        border-left: solid;
+        border-right: solid;
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+    }
+    
+    .title3{
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-weight: bold ;
+        font-size: 2VW;
+        padding-bottom: 4%;
+        text-align: center;
+    }
+    #three{
+        margin-bottom: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .victory{
+        background-color: #4171d6;
+    }
+    .defeat{
+        background-color: #e84057;
+    }
+    .name1{
+        right: 0;
+        font-size: 2vw;
+        font-weight: 500;
+        padding: 5%;
+    }
+    .name2{
+        font-size: 2vw;
+        font-weight: 500;
+        padding: 5%;
+    }
+    .score{
+        display: inline;
+        font-weight: 500;
+        font-size: 2vw;
+        margin: 5%;
+    }
+    
+    
+    #two{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title2{
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-weight: bold ;
+        font-size: 2VW;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+    }
+    #box2{
+        justify-content: center;
+        width: 14vw; /*taile des rectagnle tournoi*/
+        display: flex;
+        font-size: 1.8vw;
+        border-left: solid;
+        border-right: solid;
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+    }
+    .position{
+        color: black;
+        font-size: 4vW;
+        font-weight: 500;
+        padding: 5%;
+    }
+    .total{
+        align-self: flex-end;
+        padding: 5%;
+        font-size: 1vw;
+    }
+    .top1{
+        background-color: yellow;
+    }
+    .top2{
+        background-color: silver;
+    }
+    .top3{
+        background-color: #cc6633;
+    }
+    .veryBad{
+        background-color: rgb(92, 25, 35);
+    }
+    .bad{
+        background-color: rgb(158, 80, 92);
+    }
+    .mid{
+        background-color: rgb(133, 80, 158);
+    }
+
+    .litleTitle{
+        font-family: "Archivo Black", sans-serif;
+        font-weight: bold ;
+        font-size: 1.8VW;
+        padding-bottom: 8%;
+        text-align: center;
+        text-decoration: underline;
+    }
+    .dot {
+        margin: auto;
+        height: 25vw;
+        width: 25vw;
+        background: conic-gradient( var(--color1) var(--win), var(--color2) var(--lose) );
+        border-radius: 50%;
+        transition: 0.2s;
+        
+    }
+    #result{
+        font-family: "Archivo Black", sans-serif;
+        font-weight: bold ;
+        font-size: 1.5VW;
+        padding-bottom: 8%;
+        text-align: center;
+        opacity:  0;
+    }
+    .dot:hover  {
+        
+        #result{
+            background-color: #4171d6;
+        }
+        margin: auto;
+        height: 27vw;
+        width: 27vw;
+        background: conic-gradient( var(--color1) var(--win), var(--color2) var(--lose) );
+        border-radius: 50%;
+        transition: 0.2s;
+    }
+    
+    .dot:hover + #result {
+        transition: 0.2s;
+        opacity:  1;
+    }
+
+    
+    .no-data{
+
+        color: #e84057;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-weight: bold ;
+        font-size: 2VW;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+    }
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+
+
+.perso{
+    display: flex;
+}
+#one{
+    width: 30vw;
+}
+
+.form-profil{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+}
+
+#three{
+    margin-bottom: 20%;
+}
+#box{
+    width: 25vw; /*taile des rectagnle 1v1*/
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5vw;
+    border-left: solid;
+    border-right: solid;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.title3{
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-weight: bold ;
+    font-size: 2VW;
+    padding: 8%;
+    text-align: center;
+}
+.victory{
+    background-color: #4171d6;
+}
+.defeat{
+    background-color: #e84057;
+}
+.name1{
+    right: 0;
+    font-weight: 500;
+    padding: 5%;
+}
+.name2{
+    font-weight: 500;
+    padding: 5%;
+}
+.score{
+    display: inline;
+    font-weight: 500;
+    margin: 5%;
+}
+
+#two{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title2{
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-weight: bold ;
+    font-size: 2VW;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+#box2{
+    justify-content: center;
+    width: 10vw; /*taile des rectagnle tournoi*/
+    display: flex;
+    font-size: 1.5vw;
+    border-left: solid;
+    border-right: solid;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
+.position{
+    color: black;
+    font-size: 2.5vW;
+    font-weight: 500;
+    padding: 5%;
+}
+.total{
+    align-self: flex-end;
+    padding: 5%;
+    font-size: 1vw;
+}
+.top1{
+    background-color: yellow;
+}
+.top2{
+    background-color: silver;
+}
+.top3{
+    background-color: #cc6633;
+}
+.veryBad{
+    background-color: rgb(92, 25, 35);
+}
+.bad{
+    background-color: rgb(158, 80, 92);
+}
+.mid{
+    background-color: rgb(133, 80, 158);
+}
+
+#camembert{
+    width: 20vw;
+}
+.camembert{
+    display: flex;
+}
+.litleTitle{
+    
+    font-family: "Archivo Black", sans-serif;
+    font-weight: bold ;
+    font-size: 1.8VW;
+    padding-bottom: 8%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.dot {
+    margin: auto;
+    height: 15vw;
+    width: 15vw;
+    background: conic-gradient( var(--color1) var(--win), var(--color2) var(--lose) );
+    border-radius: 50%;
+    transition: 0.2s;
+    
+}
+#result{
+    font-family: "Archivo Black", sans-serif;
+    font-weight: bold ;
+    font-size: 1.5VW;
+    padding-bottom: 8%;
+    text-align: center;
+    opacity:  0;
+}
+.dot:hover  {
+    
+    #result{
+        background-color: #4171d6;
+    }
+    margin: auto;
+    height: 16vw;
+    width: 16vw;
+    background: conic-gradient( var(--color1) var(--win), var(--color2) var(--lose) );
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.dot:hover + #result {
+    transition: 0.2s;
+    opacity:  1;
+}
+
+
+.no-data{
+
+    color: #e84057;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-weight: bold ;
+    font-size: 2VW;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+}

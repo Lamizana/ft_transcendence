@@ -1,0 +1,381 @@
+{% extends "pong/base.html" %}
+{% load django_bootstrap5 %}
+{% block page_header %}
+
+<div class="jumbotron m-4 pb-2 mb-2 border-bottom">
+    
+    <h1 class="display-4">Pong the Rematch</h1>
+
+    <!-- Presentation "FR" -->
+    <div style="display: none;" lang="fr">
+        <p class="lead">
+            Bienvenue sur PONG! ce site permet de jouer a pong.
+            Amusez-Vous !!
+        </p>
+        <p>
+            Le concept original de Pong est un simulateur simple de ping-pong (tennis de table), reprenant le nom du jeu. 
+            Au tennis de table, les joueurs se tiennent de chaque côté d'une table de ping-pong et manient une raquette pour frapper une petite boule entre eux dans les deux sens. 
+            Ce concept de base est celui de Pong. Une petite « boule », se déplace à travers l'écran, rebondissant sur les rebords du haut et du bas, et le joueur commande un « paddle », qui glisse de en haut en bas à travers les extrémités de l'écran. Si la boule frappe la palette, elle rebondit vers l'autre joueur. Si elle manque la palette, l'ordinateur marque un point. La « boule » rebondit de différentes manières selon la façon dont la boule touche la palette.
+        </p>
+        <p>
+            Cette version en ligne de Pong peut être joué par un joueur seul avec la palette opposée commandée par l'ordinateur, à deux joueurs, à 4 joueurs et en tournoi en local à 4 joueurs.
+        </p>
+    </div>
+
+    <!-- Presentation "ES" -->
+    <div style="display: none;" lang="es">
+        <p class="lead">
+            Bienvenido a PONG! Este sitio te permite jugar al pong multijugador.
+            Divertirte !
+        </p>
+        <p>
+            El concepto original de Pong es un simple simulador de ping-pong (tenis de mesa), utilizando el nombre del juego. 
+            En el tenis de mesa, los jugadores se colocan a ambos lados de una mesa de ping-pong y golpean con una raqueta una pequeña pelota que va y viene entre ellos. 
+            Este es el concepto básico del Pong. Una pequeña «pelota» se mueve por la pantalla, rebotando en los bordes superior e inferior, y el jugador controla una «paleta», que se desliza arriba y abajo por los extremos de la pantalla. Si la pelota golpea la paleta, rebota hacia el otro jugador. Si no lo consigue, el ordenador anota un punto. La «pelota» rebota de diferentes maneras dependiendo de cómo golpee la paleta.
+        </p>
+        <p>
+            Esta versión en línea de Pong puede ser jugada por un solo jugador con la pala contraria controlada por el ordenador, por dos jugadores, por 4 jugadores y en un torneo local de 4 jugadores.
+        </p>
+    </div>
+
+    <!-- Presentation "En" -->
+    <div style="display: none;" lang="en">
+        <p class="lead">
+            Welcome to PONG! This site allows you to play multiplayer pong.
+            Have fun!
+        </p>
+        <p>
+            The original concept of Pong is a simple ping-pong (table tennis) simulator, taking its name from the game. 
+            In table tennis, players stand on either side of a ping-pong table, wielding a racket to hit a small ball back and forth between them. 
+            This is the basic concept behind Pong. A small “ball” moves across the screen, bouncing off the top and bottom edges, and the player controls a “paddle”, which glides up and down across the ends of the screen. If the ball hits the paddle, it bounces back to the other player. If it misses the paddle, the computer scores a point. The “ball” bounces in different ways, depending on how it hits the paddle.
+        </p>
+        <p>
+            This online version of Pong can be played by a single player with the opposite paddle controlled by the computer, by two players, by 4 players and in a 4-player local tournament.
+        </p>
+    </div>
+
+    {% if user.is_authenticated %}
+        <p style="display: none;" lang="fr">Content de vous voir {{ player.nickname }} !</p>
+        <p style="display: none;" lang="es">Encantado de verte {{ player.nickname }} !</p>
+        <p style="display: none;" lang="en">Nice to see you {{ player.nickname }} !</p>
+
+        <!-- -------------------------------- REGLE DU JEUX "FR" ----------------------------------------------- -->
+        <div class="pb-2 mb-2" style="display: none;" lang="fr">
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#reglefr">Régle du jeux</button>
+            <div id="reglefr" class="collapse mb-2 mt-2">
+                <p class="lead">
+                    Les règles de ce jeu d’arcade intemporel sont simples. Le premier à remporter 3 points gagne.
+                    Prends le contrôle de la raquette et essaie de faire passer la balle derrière celle de l'adversaire.
+                </p>
+                <!-- -------------------------------- MODALS 1V1----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#1v1">1v1</button>
+                <!-- Modal -->
+                <div class="modal fade" id="1v1" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">1v1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <ul>
+                                <li>Utilise les fleches directionnel haut et bas pour deplacer ta raquette situé a gauche de l'écran</li>
+                                <li>Tu peux aussi utiliser les boutons situer en dessous du jeux.</li>
+                                <li>Si c'est du 1v1 contre une personne:</li>
+                                <ul>
+                                    <li>le joueur de gauche utilise les touches W et S pour deplacer sa raquette.</li>
+                                    <li>le joueur de droite utilise les fleches directionnel haut et bas pour deplacer sa raquette.</li>
+                                </ul>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS 4V4----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#4v4">4v4</button>
+                <!-- Modal -->
+                <div class="modal fade" id="4v4" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">4v4</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>Chaque joueur a un coté.</li>
+                                    <li>Les commandes clavier sont:</li>
+                                    <ul>
+                                        <li>Joueur gauche: W = haut, S = bas.</li>
+                                        <li>Joueur bas: A = gauche, D = droite.</li>
+                                        <li>Joueur droite: Fléches directionnels haut et bas.</li>
+                                        <li>Joueur haut: Fléches directionnels gauche et droite.</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS TOURNOI ----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <!-- <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#tournoi">Tournoi</button> -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tournoi">Tournoi</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="tournoi" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tournoi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>Le tournoi se joue à 4 joueurs.</li>
+                                    <li>le joueur de gauche utilise les touches W et S pour deplacer sa raquette.</li>
+                                    <li>le joueur de droite utilise les fleches directionnel haut et bas pour deplacer sa raquette.</li>
+                                    <li>Vous pouvez aussi utiliser les boutons situés en dessous du jeux.</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------------------- REGLE DU JEUX "ES" ----------------------------------------------- -->
+        <div class="pb-2 mb-2" style="display: none;" lang="es">
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#reglees">Reglas del juego</button>
+            <div id="reglees" class="collapse mb-2 mt-2">
+                <p class="lead">
+                    Las reglas de este eterno juego de arcade son sencillas. Gana el primer jugador que consiga 3 puntos.
+                    Toma el control de la raqueta e intenta colocar la pelota detrás de la raqueta de tu oponente.
+                </p>
+                <!-- -------------------------------- MODALS 1V1----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#1v1es">1v1</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="1v1es" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">1v1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <ul>
+                                <li>Usa las flechas arriba y abajo para mover tu raqueta a la izquierda de la pantalla.</li>
+                                <li>También puedes utilizar los botones situados debajo del juego.</li>
+                                <ul>
+                                    <li>el jugador de la izquierda utiliza las teclas W y S para mover su raqueta.</li>
+                                    <li>el jugador de la derecha utiliza las flechas arriba y abajo para mover su raqueta.</li>
+                                </ul>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS 4V4----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#4v4es">4v4</button>
+                <!-- Modal -->
+                <div class="modal fade" id="4v4es" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">4v4</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>Cada jugador tiene un bando.</li>
+                                    <li>Los comandos de teclado son:</li>
+                                    <ul>
+                                        <li>Jugador izquierdo: W = alto, S = bajo.</li>
+                                        <li>Jugador bajo: A = izquierda, D = derecha.</li>
+                                        <li>Jugador derecho: Flechas de dirección arriba y abajo.</li>
+                                        <li>Jugador superior: Flechas de dirección izquierda y derecha.</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS TOURNOI ----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#torneo">Torneo</button>
+                <!-- Modal -->
+                <div class="modal fade" id="torneo" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Torneo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>El torneo se juega con 4 jugadores.</li>
+                                    <li>El jugador de la izquierda utiliza las teclas W y S para mover su raqueta.</li>
+                                    <li>El jugador de la derecha utiliza las flechas arriba y abajo para mover su raqueta.</li>
+                                    <li>También puedes utilizar los botones situados debajo del juego.</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------------------- REGLE DU JEUX "EN" ----------------------------------------------- -->
+        <div class="pb-2 mb-2" style="display: none;" lang="en">
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#regleen">Game rules</button>
+            <div id="regleen" class="collapse mb-2 mt-2">
+                <p class="lead">
+                    The rules of this timeless arcade game are simple. The first player to win 3 points wins.
+                    Take control of the racket and try to get the ball behind your opponent's racket.
+                </p>
+                <!-- -------------------------------- MODALS 1V1----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#1v1en">1v1</button>
+                <!-- Modal -->
+                <div class="modal fade" id="1v1en" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">1v1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <ul>
+                                <li>Use the up and down arrows to move your racket on the left of the screen.</li>
+                                <li>You can also use the buttons below the game.</li>
+                                <li>If it's 1v1 against one person:</li>
+                                <ul>
+                                    <li>The left-hand player uses the W and S keys to move his racket.</li>
+                                    <li>the right-hand player uses the up and down arrows to move his racket.</li>
+                                </ul>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS 4V4----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#4v4en">4v4</button>
+                <!-- Modal -->
+                <div class="modal fade" id="4v4en" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">4v4</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>Each player has one side.</li>
+                                    <li>The keyboard commands are::</li>
+                                    <ul>
+                                        <li>Left player: W = up, S = down.</li>
+                                        <li>Low player: A = left, D = right.</li>
+                                        <li>Right player: Directional arrows up and down.</li>
+                                        <li>Top player: Left and right directional arrows.</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------- MODALS TOURNOI ----------------------------------------------- -->
+                <!-- Déclencher la modale à l'aide d'un bouton  -->
+                <!-- <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#tournoi">Tournoi</button> -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tournament">Tournament</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="tournament" role="dialog">
+                    <div class="modal-dialog">  
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tournament</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>The tournament is played by 4 players.</li>
+                                    <li>The left-hand player uses the W and S keys to move his racket.</li>
+                                    <li>The player on the right uses the up and down arrows to move his racket.</li>
+                                    <li>You can also use the buttons below the game.</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div style="display: none;" lang="fr">
+            <a class="btn btn btn-primary" href="{% url 'utilisateurs:register' %}" role="button">Inscription &raquo;</a>
+        </div>
+        <div style="display: none;" lang="es">
+            <a class="btn btn btn-primary" href="{% url 'utilisateurs:register' %}" role="button">Inscríbete &raquo;</a>
+        </div>
+        <div style="display: none;" lang="en">
+            <a class="btn btn btn-primary" href="{% url 'utilisateurs:register' %}" role="button">Sign-up &raquo;</a>
+        </div>
+    {% endif %}
+</div>
+
+ <!-- Footer. -->
+<nav class="nav justify-content-center fixed-bottom navbar-dark bg-dark pt-2
+text-light navbar-center">
+    <div lang="fr" style="display: none;" class="footer_text">FAIT PAR M V N A</div>
+    <div lang="es" style="display: none;" class="footer_text">HECHO POR M V N A</div>
+    <div lang="en" style="display: none;" class="footer_text">MADE BY M V N A</div>
+</nav>
+
+{% endblock page_header %}

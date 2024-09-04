@@ -1,0 +1,62 @@
+{% extends 'pong/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron m-4 pb-2 mb-2 border-bottom">
+  <h2 style="display: none;" lang="fr">Ajout d'amis.</h2>
+  <h2 style="display: none;" lang="es">Agregar amigos.</h2>
+  <h2 style="display: none;" lang="en">Add friends.</h2>
+
+  <p class="lead" style="display: none;" lang="fr">
+    Vous etes sur la page d'amis.Vous pouvez choisir d'en ajouter ou d'en supprimer.
+  </p>
+  <p class="lead" style="display: none;" lang="es">
+    Estás en la página de amigos y puedes elegir añadir o eliminar amigos.
+  </p>
+  <p class="lead" style="display: none;" lang="en">
+    You're on the friends page, where you can choose to add or remove friends.
+  </p>
+
+  <form enctype="multipart/form-data" onsubmit="addFriend(event);" id="myForm_friends" >
+    {% csrf_token %}
+    <div class="col-md-10 mb-3">
+      {% bootstrap_form form %}
+    </div>
+    <button class="btn btn-primary" style="display: none;" lang="fr">Ajout d'ami</button>
+    <button class="btn btn-primary" style="display: none;" lang="es">Añadir amigo</button>
+    <button class="btn btn-primary" style="display: none;" lang="en">Add friend</button>
+  </form>
+</div>
+
+<div class="jumbotron m-4 pb-2 mb-2 border-bottom">
+  <h2 style="display: none;" lang="fr">Liste d'amis.</h2>
+  <h2 style="display: none;" lang="es">Lista de amigos.</h2>
+  <h2 style="display: none;" lang="en">Friend-list.</h2>
+  {% for friend in everyFriend %}
+  <!-- ajout du status de l'image -->         
+  <div name="{{friend.id}}" class="m-4 pb-2 mb-2">
+    <h5 class="card-title">{{ friend.nickname }}</h5>
+    <!-- ajout du status de la connexion -->
+    <div class="connexion_status"></div>
+    <img src=" {{ friend.picture.url }}" class="img-fluid"> 
+    <form enctype="multipart/form-data" onsubmit="delete_function('{{friend.id}}', event);" id="myForm_friends_delete">
+      {% csrf_token %}
+      <button lang="fr" style="display: none;" type="submit" class="btn btn-warning" >SUPPRIMER</button>
+      <button lang="en" style="display: none;" type="submit" class="btn btn-warning" >DELETE</button>
+      <button lang="es" style="display: none;" type="submit" class="btn btn-warning" >BORRAR</button> 
+    </form>          
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+

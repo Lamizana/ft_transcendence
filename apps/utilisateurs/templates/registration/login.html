@@ -1,0 +1,39 @@
+{% extends "pong/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+    <h2 style="display: none;" lang="fr">Connectez-vous à votre compte.</h2>
+    <h2 style="display: none;" lang="es">Conéctese a su cuenta.</h2>
+    <h2 style="display: none;" lang="en">Log in to your account.</h2>
+
+{% endblock page_header %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" onsubmit="createLogin(event);" id="loginForm" class="form">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        <button name="submit" class="btn btn-primary" style="display: none;" lang="fr">Connexion</button>
+        <button name="submit" class="btn btn-primary" style="display: none;" lang="es">Conexión</button>
+        <button name="submit" class="btn btn-primary" style="display: none;" lang="en">Login</button>
+        
+        <input type="hidden" name="next" />
+    </form>
+    <div>
+        <small style="display: none;" lang="fr">
+            Je n'ai pas de compte
+            <a href="{% url 'utilisateurs:register' %}">inscription</a>
+        </small>
+
+        <small style="display: none;" lang="es">
+            No tengo cuenta
+            <a href="{% url 'utilisateurs:register' %}">Registro</a>
+        </small>
+
+        <small style="display: none;" lang="en">
+            I don't have an account
+            <a id="registerLink" href="{% url 'utilisateurs:register' %}">create it</a>
+        </small>
+    </div>
+{% endblock content %}

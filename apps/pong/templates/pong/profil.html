@@ -1,0 +1,112 @@
+{% extends "pong/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block content %}
+
+<!-- --------------------------------------  PARAMÈTRES  -------------------------------------------------------->
+<div class="jumbotron m-4 pb-2 mb-2 border-bottom" >
+
+    <h4 style="display: none;" lang="fr">PROFIL</h4>
+    <p class="lead" style="display: none;" lang="fr">Vous pouvez changer vos informations personnelles et voir vos historiques de parties.</p>
+
+    <h4 style="display: none;" lang="es">PERFIL</h4>
+    <p class="lead" style="display: none;" lang="es">Puedes modificar tus datos personales y consultar tu historial de juego.</p>
+
+    <h4 style="display: none;" lang="en">PROFILE</h4>
+    <p class="lead" style="display: none;" lang="en">You can change your personal information and view your game history.</p>
+
+    <!-- IMAGE DE PROFIL -->
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <p style="display: none;" lang="fr">Content de vous voir {{ player.nickname }} !</p>
+                <p style="display: none;" lang="es">Me alegro de verte {{ player.nickname }} !</p>
+                <p style="display: none;" lang="en">Nice to see you {{ player.nickname }} !</p>
+            </div>
+            <div class="col-3 mb-3">
+                <img src=" {{ player.picture.url }}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <!-- COLLAPSE PARAMÈTRES -->
+    <div class="pb-2 mb-2">
+        <div style="display: none;" lang="fr">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#name">Changer votre nom</button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pass">Changer mot de passe</button>
+        </div>
+        <div style="display: none;" lang="es">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#name">Cambiar de nombre</button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pass">Cambiar contraseña</button>
+        </div>
+        <div style="display: none;" lang="en">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#name">Change name</button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#pass">Change password</button>
+        </div>
+    </div>
+
+    <div id="name" class="collapse mb-2 mt-2">
+        <p style="display: none;" lang="fr">Changer votre nom ou votre photo de profil:</p>
+        <p style="display: none;" lang="es">Cambia tu nombre o tu foto de perfil:</p>
+        <p style="display: none;" lang="en">Change your name or profile picture:</p>
+
+        <form method="post" class="form-profil" onsubmit="myForm(event)" id="myForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-10 mb-3">
+                {{ profil_form.as_p }} 
+            </div>
+            <button class="col-md-10 mb-3 btn btn-primary" type="submit" name="save" style="display: none;" lang="fr">Valider</button>
+            <button class="col-md-10 mb-3 btn btn-primary" type="submit" name="save" style="display: none;" lang="es">Confirme</button>
+            <button class="col-md-10 mb-3 btn btn-primary" type="submit" name="save" style="display: none;" lang="en">Confirm</button>
+        </form>
+    </div>
+     
+    <div id="pass" class="collapse mb-2 mt-2">
+        <p style="display: none;" lang="fr">Changer mot de passe:</p>
+        <p style="display: none;" lang="es">Cambia tu nombre o tu foto de perfil:</p>
+        <p  style="display: none;" lang="en">Change your name or profile picture:</p>
+
+        <form enctype="multipart/form-data" onsubmit="changePWD(event);" class="form" >
+        <!-- <form method="post" action="{% url 'pong:change_password' %}" class="form"> -->
+            {% csrf_token %}
+            {{ password_form.as_p }}
+            <button class="col-md-10 mb-3 btn btn-primary" id="btn_valider_profil1" type="submit" name="save" style="display: none;" lang="fr">Valider</button>
+            <button class="col-md-10 mb-3 btn btn-primary" id="btn_valider_profil2" type="submit" name="save" style="display: none;" lang="es">Confirme</button>
+            <button class="col-md-10 mb-3 btn btn-primary" id="btn_valider_profil3" type="submit" name="save" style="display: none;" lang="en">Confirm</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- -------------------------------------- STATISTIQUES -------------------------------------------------------->
+<div class="jumbotron m-4 pb-2 mb-2 border-bottom">
+    <h4 style="display: none;" lang="fr">STATISTIQUES</h4>
+    <h4 style="display: none;" lang="es">STATISTIQUES</h4>
+    <h4 style="display: none;" lang="en">STATISTIQUES</h4>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div id="camembert">
+                    <div class="litleTitle">1 vs 1</div>
+                    <div id="camembert-dot" class="dot"></div>
+                    <div id="result"></div> 
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="two">
+                    <div lang="fr" style="display: none;" class="title2">TOURNOI</div>
+                    <div lang="es" style="display: none;" class="title2">TORNEO</div>
+                    <div lang="en" style="display: none;" class="title2">TOURNAMENT</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="three" class="three">
+                    <div class="title2">1 vs 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

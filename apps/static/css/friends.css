@@ -1,0 +1,130 @@
+.title2-friends{
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-weight: bold ;
+  font-size: 3.5VW;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #5f1b1b;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+
+@media only screen and (max-width: 1023px) {
+
+  .friends{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+
+  }
+  .friends > div{
+    text-align: center;
+  }
+
+  .title2-friends{
+    font-size: 5VW;
+    
+  }
+  .friendlist{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card{
+    width: 12rem;
+  }
+}
+
+
+
+@media screen and (min-width: 1024px) {
+  
+  .friends{
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  #one-friend{
+      padding: 1.5em;
+      background-color: aliceblue;
+  }
+  
+  
+  /* .connected {
+    height: 25px;
+    width: 25px;
+    background-color: #21ba19;
+    border-radius: 50%;
+    display: inline-block;
+  } */
+}
+

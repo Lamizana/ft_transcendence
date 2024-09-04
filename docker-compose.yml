@@ -1,0 +1,58 @@
+# docker-compose.yml
+
+services:
+  web:
+    container_name: web
+    build: ./apps
+    command: gunicorn website.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./apps/:/usr/src/apps/
+      - static:/usr/src/apps/static/
+      - media:/usr/src/apps/media/
+    expose:
+      - 8000
+    networks:
+      - nginx
+      - db
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - db
+    expose:
+      - 5432
+    env_file:
+      - ./.env
+    restart: always
+
+  nginx:
+    build:
+      context: ./nginx
+    networks:
+      - nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static:/static/
+      - media:/media/ 
+    ports:
+      - "8080:8080"
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static:
+  media:
+
+
+networks:
+  nginx:
+    driver: bridge
+  db:
+    driver: bridge

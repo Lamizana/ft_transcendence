@@ -1,0 +1,37 @@
+{% extends "pong/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+    <h2 style="display: none;" lang="fr">Inscrivez-vous pour participer.</h2>
+    <h2 style="display: none;" lang="es">Inscríbase para participar.</h2>
+    <h2 style="display: none;" lang="en">Register to take part.</h2>
+
+{% endblock page_header %}
+
+{% block content %}
+    <form  enctype="multipart/form-data" onsubmit="createRegister(event);" class="form" id="registerForm">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="submit" id="btn_register1" class="btn btn-primary" style="display: none;" lang="fr">Inscription</button>
+        <button name="submit" id="btn_register2" class="btn btn-primary" style="display: none;" lang="es">Registro</button>
+        <button name="submit" id="btn_register3" class="btn btn-primary" style="display: none;" lang="en">Register</button>
+        
+        <input type="hidden" name="next" value="{% url 'pong:new_profil' %}" />
+    </form>
+    <div>
+        <small style="display: none;" lang="fr">
+            J'ai déja un compte
+            <a href="{% url 'utilisateurs:login' %}">connexion</a>
+        </small>
+
+        <small style="display: none;" lang="es">
+            Tengo una cuenta
+            <a href="{% url 'utilisateurs:login' %}">conexión</a>
+        </small>
+
+        <small style="display: none;" lang="en">
+            I have an account
+            <a href="{% url 'utilisateurs:login' %}">login</a>
+        </small>
+    </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "pong/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+
+<div class="jumbotron" style="display: none;" lang="fr">
+    <h4>Bonjour {{ user.username }}.</h4>
+    <p class="lead">Renseigner votre profil (obligatoire).</p>
+</div>
+
+<div class="jumbotron" style="display: none;" lang="es">
+    <h4>Hola {{ user.username }}.</h4>
+    <p class="lead">Rellene su perfil (obligatorio).</p>
+</div>
+
+<div class="jumbotron" style="display: none;" lang="en">
+    <h4>Hello {{ user.username }}.</h4>
+    <p class="lead">Enter your profile (required).</p>
+</div>
+
+{% endblock page_header %}
+
+{% block content %}
+<form enctype="multipart/form-data" onsubmit="createnickName(event);" class="form" id="nicknameForm">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary" style="display: none;" lang="fr">Valider</button>
+    <button name="submit" class="btn btn-primary" style="display: none;" lang="es">Validar</button>
+    <button name="submit" class="btn btn-primary" style="display: none;" lang="en">Validate</button>
+    <input type="hidden" name="next" value="{% url 'pong:index' %}" />
+</form>
+
+{% endblock content %}

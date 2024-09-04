@@ -1,0 +1,46 @@
+
+{% extends 'pong/base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+
+<!-- Configuration bouttons pour definir le type de partie: -->
+<div class="TitlePong">
+    <h1 class="titlePong" style="display: none;" lang="en">PONG Game</h1>
+    <h1 class="titlePong" style="display: none;" lang="es">Juego de PONG</h1>
+    <h1 class="titlePong" style="display: none;" lang="fr">Le jeu PONG</h1>
+</div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+
+
+    <button style="display: none;" lang="fr" class="btn btn-primary" id = 'btnCreateSolo'>Nouvelle partie</button>
+    <button style="display: none;" lang="es" class="btn btn-primary" id = 'btnCreateSolo'>Nuevo juego en solitario</button>
+    <button style="display: none;" lang="en" class="btn btn-primary" id = 'btnCreateSolo'>New Game Solo</button>
+    
+    <button style="display: none;" lang="es" class="btn btn-primary" id = 'btnCreate2Player'>Nuevo juego multijugador</button>
+    <button style="display: none;" lang="fr" class="btn btn-primary" id = 'btnCreate2Player'>Nouvelle partie Multi</button>
+    <button style="display: none;" lang="en" class="btn btn-primary" id = 'btnCreate2Player'>New Game Multi</button>
+    
+    <button style="display: none;" lang="fr" class="btn btn-primary" id='btnCreate4Player'>Nouvelle partie a 4</button>
+    <button style="display: none;" lang="es" class="btn btn-primary" id='btnCreate4Player'>Nuevo juego 4</button>
+    <button style="display: none;" lang="en" class="btn btn-primary" id='btnCreate4Player'>New Game 4 Player</button>    
+    
+    <button style="display: none;" lang="fr" class="btn btn-primary" id='Tournaments'>Tournois de 4</button>
+    <button style="display: none;" lang="es" class="btn btn-primary" id='Tournaments'>Torneos de 4</button>
+    <button style="display: none;" lang="en" class="btn btn-primary" id='Tournaments'>Tournaments of 4</button>
+</div>
+                
+<!-- Configuration jeux: -->
+<canvas style="display: none;" id="canva"  class="canva"></canvas>
+<div class="d-grid gap-2 col-6 mx-auto" id="forNames"></div>
+            
+<!-- Configuration commandes de jeux: -->
+<div class="d-grid mx-auto" id="forNames">
+    <div id="btns"></div>
+    <div id="btns2"></div>
+</div>
+
+{% endblock %}
