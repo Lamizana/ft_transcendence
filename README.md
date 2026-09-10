@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/HTML5%20Canvas-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 Canvas">
 </p>
 
-<h1 align="center">ft_transcendence</h1>
+<h1 align="center">ft_transcendance</h1>
 
 <p align="center">
   <strong>Application web multijoueurs permettant de jouer à Pong en ligne, avec gestion de profils, statistiques, amis et tournois.</strong>
