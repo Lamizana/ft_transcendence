@@ -1,63 +1,62 @@
 # SOMMAIRE
 
 1. La naissance du Web:
-- Difference entre Internet et Web.
+   - Difference entre Internet et Web.
 
 2. Les langage de programation: 
-- Veritable "langue" informatiques qui permettent de creer des sites web.
+   - Veritable "langue" informatiques qui permettent de creer des sites web.
 
 3. Les reseaux:
-- Sur le Web , nous communiquant en reseau.
-- differant mecanismes: IP, noms d'hotes, serveur, client, ...
+   - Sur le Web , nous communiquant en reseau.
+   - differant mecanismes: IP, noms d'hotes, serveur, client, ...
 
 4. Les metiers du Web:
-- Apercu du quotidien des differents professionnels du Web.
+   - Apercu du quotidien des differents professionnels du Web.
 
 ----------------------------------------------------------------
 ## 1. La naissance du Web:
 
 - La plus grande invention a la base du Web:
-	lien hypertexte: etre sur une page et cliquer sur un mot pour en voir une autre.
+	- **lien hypertexte**: etre sur une page et cliquer sur un mot pour en voir une autre.
 
 - le Web peut etre vu comme une toile d'araignee:
-	on y voit des hypertexte qui relie les pages entre elles.
+	- on y voit des hypertexte qui relie les pages entre elles.
 
 - Internet a ete invente avant le Web:
-	on peux voir le Web comme un service a l'interieur d'internet.
+	- on peux voir le Web comme un service a l'interieur d'internet.
 
 ### Les services fournis sur internet:
 
 - Le Web:
-	ouvrir un navigateur Wb pour y aller (Google, Chromme, ... ).
+	- ouvrir un navigateur Wb pour y aller (Google, Chromme, ... ).
 
 - Les e-mails:
-	pour echanger des msg, il s'agit de courrier electronique.
+	- pour echanger des msg, il s'agit de courrier electronique.
 
 - Les newsgroups:
-	ancetre des forum et permettent de discuter a plusieur en postant des msg (Discord).
+	- ancetre des forum et permettent de discuter a plusieur en postant des msg (Discord).
 
 - Le FTP:
-	un moyen d'echanger des fichiers entre ordinateurs.
+	- un moyen d'echanger des fichiers entre ordinateurs.
 
 - on confond souvent le Web avec le reste, car tous les services convergent vers de dernier.
-	il est la porte d'entree a la plupart de services d'aujourd'hui.
+	- il est la porte d'entree a la plupart de services d'aujourd'hui.
 
 ### Le cloud:
 
 - Le Web sert de passerelle a de nombreux services, sous la denomination "cloud":
-	Gmail est un service d'e-mail sur le Cloud.
+	- Gmail est un service d'e-mail sur le Cloud.
 
 - Il y a plusieurs type de Cloud, on parle de SaaS:
-	Software as a Service, pour designer le cas le plus courant pour le grand public,
-	a savoir un logiciel que l'on utilise a travers une interface Web:
+	- Software as a Service, pour designer le cas le plus courant pour le grand public, a savoir un logiciel que l'on utilise a travers une interface Web:
 
 - Pour retrouver les anciennes versions des site Web:
-	Wayback Machine.
+	-** Wayback Machine**.
 
 ### Histoire d' Internet et du Web:
 
 - 1969: Creation de l'ancetre d'Internet, ARPAnet:
-	réseau militaire decentralisé.
+	- réseau militaire decentralisé.
 
 - 1972: Apparition des e-mails pour échanger des messages.
 
@@ -66,14 +65,14 @@
 - 1991: Lancement du Web, pour afficher des pages d'informations.
 
 - Internet est apparu avant le Web:
-	il était possible de s'échanger des e-mails avant que l'on puissent consulter des pages Web.
+	- il était possible de s'échanger des e-mails avant que l'on puissent consulter des pages Web.
 
 - Tim BERNERS-LEE est l'inventeur du Web:
-	il est le 1er à presenter un concept de page web avec des liens hypertexte.
-	il est aussi à l'origine des bases du langage HTML.
+	- il est le 1er à presenter un concept de page web avec des liens hypertexte.
+	- il est aussi à l'origine des bases du langage HTML.
 
 - World Wide Web Consortium (WC3);
-	organisme qui guide aujourd'hui l'evolution du Web.
+	- organisme qui guide aujourd'hui l'evolution du Web.
 
 ----------------------------------------------------------------
 ## 2. Les langages de programations.

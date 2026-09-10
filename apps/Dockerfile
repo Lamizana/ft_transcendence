@@ -1,5 +1,5 @@
 # Recuperer l'image officielle de base:
-FROM python:3
+FROM python:3.12
 
 # Definit le repertoire de travail:
 WORKDIR /usr/src/apps
@@ -24,4 +24,4 @@ RUN chmod +x /usr/src/apps/entrypoint.sh
 COPY . .
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/apps/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/apps/entrypoint.sh"
